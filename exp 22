@@ -1,0 +1,35 @@
+# Given data
+age_value <- 35
+standard_deviation_age <- 12.94
+
+# (i) Min-Max Normalization
+min_max_normalize <- function(x, min_val, max_val) {
+  return ((x - min_val) / (max_val - min_val))
+}
+
+min_age <- 0.0
+max_age <- 100.0  # Assuming a typical human age range
+
+min_max_normalized_age <- min_max_normalize(age_value, min_age, max_age)
+
+cat("(i) Min-Max Normalization Result:", min_max_normalized_age, "\n")
+
+# (ii) Z-Score Normalization
+z_score_normalize <- function(x, mean_val, std_dev) {
+  return ((x - mean_val) / std_dev)
+}
+
+mean_age <- 0  # Assuming a typical mean age
+z_score_normalized_age <- z_score_normalize(age_value, mean_age, standard_deviation_age)
+
+cat("(ii) Z-Score Normalization Result:", z_score_normalized_age, "\n")
+
+# (iii) Normalization by Decimal Scaling
+normalize_decimal_scaling <- function(x) {
+  scale_factor <- 10^ceiling(log10(x))
+  return (x / scale_factor)
+}
+
+decimal_scaled_age <- normalize_decimal_scaling(age_value)
+
+cat("(iii) Normalization by Decimal Scaling Result:", decimal_scaled_age, "\n")
