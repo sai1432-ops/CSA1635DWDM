@@ -1,0 +1,19 @@
+# Define the intervals and frequencies
+intervals <- c(5, 15, 20, 50, 80, 110)
+frequencies <- c(200, 450, 300, 1500, 700, 44)
+
+# Create a cumulative frequency vector
+cumulative_freq <- cumsum(frequencies)
+
+# Find the median interval
+median_interval <- intervals[which(cumulative_freq >= sum(frequencies)/2)[1]]
+
+# Compute the approximate median value
+lower_bound <- ifelse(median_interval == min(intervals), 0, median_interval - 5)
+upper_bound <- ifelse(median_interval == max(intervals), Inf, median_interval + 5)
+
+# Use midpoint formula to calculate median
+approx_median <- lower_bound + (sum(frequencies)/2 - cumsum(frequencies[which(intervals == median_interval)])[1]) / frequencies[which(intervals == median_interval)][1]
+
+# Print the result
+cat("Approximate Median Value:", approx_median, "\n")
