@@ -1,0 +1,24 @@
+# Given data
+pencils_in_boxes <- c(9, 25, 23, 12, 11, 6, 7, 8, 9, 10)
+
+# (i) Mean Calculation
+mean_value <- mean(pencils_in_boxes)
+
+cat("Mean Value:", mean_value, "\n")
+
+# (ii) Median Calculation
+median_value <- median(pencils_in_boxes)
+
+cat("Median Value:", median_value, "\n")
+
+# (iii) Mode Calculation
+# Note: Mode may not have a unique value, so we'll use a custom function to find all modes
+find_modes <- function(x) {
+  tbl <- table(x)
+  modes <- as.numeric(names(tbl[tbl == max(tbl)]))
+  return(modes)
+}
+
+modes <- find_modes(pencils_in_boxes)
+
+cat("Mode Value(s):", paste(modes, collapse = ", "), "\n")
